@@ -1,50 +1,58 @@
-const actualYear=2024
-    const locale='en' //Spanish
+const createCalendar = ({ locale, year }) => {
+    const weekdays = [...Array(7).keys()]
+    const intlWeekDay = new Intl.DateTimeFormat(locale, { weekday: 'short' })
 
-    const weekDays = [...Array(7).keys()]
-    const internationalDays = new Intl.DateTimeFormat(locale, { weekday:'long' })
+    const el = document.querySelector('div')
 
-    const weekDaysNames= weekDays.map((_,weekDayIndex) =>{
-        const date = new Date(2021,10,weekDayIndex+1)
-         const weekDayName = internationalDays.format(date)
-         return weekDayName
+    document.getElementById('up').addEventListener('click', () => {
+      el.scrollTo({ top: el.scrollTop - window.innerHeight, behavior: 'smooth' })
     })
 
-    const renderWeekDays = weekDaysNames.map(weekDayName =>
-        `<li class="day-name">${weekDayName} </li>`).join('')
+    document.getElementById('down').addEventListener('click', () => {
+      el.scrollTo({ top: el.scrollTop + window.innerHeight, behavior: 'smooth' })
+    })
 
+    const weekDaysNames = weekdays.map((_, weekDayIndex) => {
+      const date = new Date(2021, 10, weekDayIndex + 1)
+      const weekDayName = intlWeekDay.format(date)
+      return weekDayName
+    })
+
+    const renderedWeekDays = weekDaysNames.map(weekDayName => `<li class='day-name'>${weekDayName}</li>`).join('')
 
     const months = [...Array(12).keys()]
-    const international = new Intl.DateTimeFormat(locale, { month:'long' })
+    const intl = new Intl.DateTimeFormat(locale, { month: 'long' })
 
-    const calendar = months.map(monthKey=> {
-      const monthName = international.format(new Date(actualYear,
-      monthKey))
+    const calendar = months.map(monthKey => {
+      const monthName = intl.format(new Date(year, monthKey))
 
-        const nextMonthIndex = monthKey +1
-        const daysofMonth = new Date(actualYear,nextMonthIndex,0).getDate()
+      const nextMonthIndex = monthKey + 1
+      const daysOfMonth = new Date(year, nextMonthIndex, 0).getDate()
 
-        const startsOn = new Date(actualYear, monthKey, 1).getDay()
-        
+      const startsOn = new Date(year, monthKey, 1).getDay()
+
       return {
-          monthName,
-          daysofMonth,
-          startsOn
+        monthName,
+        daysOfMonth,
+        startsOn
       }
     })
 
-    const html = calendar.map(({daysofMonth, monthName,startsOn}
-    ) => {
-        const days= [...Array(daysofMonth).keys()]
+    const html = calendar.map(({ daysOfMonth, monthName, startsOn }) => {
+      const days = [...Array(daysOfMonth).keys()]
 
-        const firstDaysAttributes = `class='first-day' style='--first-day-start: ${startsOn}'`
-        const renderedDays = days.map((day,index) =>
-            `<li ${index===0 ? firstDaysAttributes : ''}>${day + 1}</li>`
-        ).join('')
+      const firstDayAttributes = `class='first-day' style='--first-day-start: ${startsOn}'`
 
-        const title =`<h1>${monthName.toUpperCase()} ${actualYear}</h1>`
-        
-        return `${title}<ol>${renderWeekDays} ${renderedDays}</ol>`
+      const renderedDays = days.map((day, index) =>
+        `<li ${index === 0 ? firstDayAttributes : ''}>${day + 1}</li>`
+      ).join('')
+
+      const title = `<h1>${monthName} ${year}</h1>`
+
+      return `<div class='month'>${title}<ol>${renderedWeekDays} ${renderedDays}</ol></div>`
     }).join('')
-           
-    document.querySelector('div').innerHTML= html
+
+    el.innerHTML = html
+  }
+
+  createCalendar({ year: 2024, locale: 'en' })
