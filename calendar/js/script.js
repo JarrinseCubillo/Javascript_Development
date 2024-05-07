@@ -30,7 +30,7 @@ const createCalendar = ({ locale, year }) => {
       const daysOfMonth = new Date(year, nextMonthIndex, 0).getDate()
 
       const startsOn = new Date(year, monthKey, 1).getDay()
-
+      console.log(startsOn)
       return {
         monthName,
         daysOfMonth,
@@ -41,7 +41,7 @@ const createCalendar = ({ locale, year }) => {
     const html = calendar.map(({ daysOfMonth, monthName, startsOn }) => {
       const days = [...Array(daysOfMonth).keys()]
 
-      const firstDayAttributes = `class='first-day' style='--first-day-start: ${startsOn}'`
+      const firstDayAttributes = `class='first-day' style='--first-day-start: ${startsOn===0 ? 7 : startsOn}'`
 
       const renderedDays = days.map((day, index) =>
         `<li ${index === 0 ? firstDayAttributes : ''}>${day + 1}</li>`
@@ -53,6 +53,7 @@ const createCalendar = ({ locale, year }) => {
     }).join('')
 
     el.innerHTML = html
+
   }
 
   createCalendar({ year: 2024, locale: 'en' })
