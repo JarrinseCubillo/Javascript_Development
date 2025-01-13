@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact Book</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body onload="showPeople()">
+  <div class="container" id="header">
+    <h1>Listado de personas</h1>
+  </div>
+   <div class="container">
+       <div class="element">
+           <ul id="people">
+
+           </ul>
+       </div>
+   </div>
+   <div class="container">
+       <div id="btn-container">
+           <br>
+           <button id="btn-effect" onclick="addPerson()">+</button>
+       </div>
+       <form id='forms'>
+           <input type="text" id='name' placeholder="Nombre"/>
+           <input type='text' id='lastName' placeholder="Apellido"/>
+       </form>
+   </div>
+</body>
+<script src="js/person.js"></script>
+<script src="js/main.js"></script>
+</html>
