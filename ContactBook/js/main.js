@@ -1,4 +1,5 @@
-let people = [];
+let savedNames = JSON.parse(localStorage.getItem('people'));
+let people =  Array.from(savedNames);
 
 const addPerson =() =>{
     let forms =document.forms['forms'];
@@ -11,12 +12,13 @@ const addPerson =() =>{
     people.push(person);
     formatInput();
     showPeople();
+    localStorage.setItem('people', JSON.stringify(people));
 }
 
 const showPeople = () => {
     let peopleList='';
     for (let person of people) {
-        peopleList+=`<li>${person.name} ${person.lastName}</li>`;
+        peopleList+=`<li>${person._name} ${person._lastname}</li>`;
     }
     document.getElementById('people').innerHTML=peopleList;
 }
