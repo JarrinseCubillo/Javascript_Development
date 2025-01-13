@@ -1,5 +1,8 @@
 let savedNames = JSON.parse(localStorage.getItem('people'));
-let people =  Array.from(savedNames);
+let people =[];
+
+if (savedNames!=null)
+    people =  Array.from(savedNames);
 
 const addPerson =() =>{
     let forms =document.forms['forms'];
