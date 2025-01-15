@@ -30,7 +30,6 @@ const createCalendar = ({ locale, year }) => {
       const daysOfMonth = new Date(year, nextMonthIndex, 0).getDate()
 
       const startsOn = new Date(year, monthKey, 1).getDay()
-      console.log(startsOn)
       return {
         monthName,
         daysOfMonth,
