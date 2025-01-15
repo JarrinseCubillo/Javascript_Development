@@ -55,5 +55,5 @@ const createCalendar = ({ locale, year }) => {
     el.innerHTML = html
 
   }
-
-  createCalendar({ year: 2024, locale: 'en' })
+let date = new Date();
+createCalendar({ year: date.getFullYear(), locale: 'en' })
