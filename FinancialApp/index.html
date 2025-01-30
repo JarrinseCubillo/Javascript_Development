@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Financial App</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body onload="loadApp()">
+  <div class="header">
+        <div class="budget">
+            <div class="budget_title">
+                Presupuesto Disponible
+            </div>
+            <div class="budget_value" id="budget">
+
+            </div>
+
+            <div class="budget_income cleanStyles">
+                <div class="budget_income--text">Ingresos</div>
+                <div class="right">
+                    <div class="budget_income--value" id="income"></div>
+                    <div class="budget_income--percentage"> </div>
+                </div>
+            </div>
+
+            <div class="budget_egress cleanStyles">
+                <div class="budget_egress--text">Egresos</div>
+                <div class="right cleanStyles">
+                    <div class="budget_egress--value" id="egress"></div>
+                    <div class="budget_egress--percentage" id="percentage">45%</div>
+                </div>
+            </div>
+        </div>
+  </div>
+  <form onsubmit="return false;" id="forms">
+      <div class="add">
+          <div class="add_container">
+              <select name="type" id="type" class="add_type">
+                  <option value="income" selected>Ingreso</option>
+                  <option value="egress">Egreso</option>
+              </select>
+              <input type="text" id="description" class="add_description" placeholder="Agregar Descripcion"/>
+              <input type="number" id="value" class="add_value" placeholder="Agregar Valor"/>
+              <button class="add_btn" onclick="addData()">
+                  <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </button>
+          </div>
+      </div>
+  </form>
+<div class="container cleanStyles">
+    <div class="income">
+        <h2 class="income_title">Ingresos</h2>
+        <div id="list-incomes"></div>
+    </div>
+    <div class="egress">
+        <h2 class="egress_title">Egresos</h2>
+        <div id="list-egress"></div>
+    </div>
+</div>
+</body>
+<script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+<script src="js/Model/Data.js"></script>
+<script src="js/Model/Income.js"></script>
+<script src="js/Model/Egress.js"></script>
+<script src="js/main.js"></script>
+
+</html>
