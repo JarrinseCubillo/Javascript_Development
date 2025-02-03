@@ -21,7 +21,7 @@ let loadApp=()=>{
 let totalIncomes=()=>{
    let totalIncome=0;
    for(let income of incomes){
-       totalIncome += income.value;
+       totalIncome += income._value;
    }
    return totalIncome;
 }
@@ -29,7 +29,7 @@ let totalIncomes=()=>{
 let totalEgress=()=>{
     let totalEgress=0;
     for(let egress of egresses){
-        totalEgress+=egress.value;
+        totalEgress+=egress._value;
     }
     return totalEgress;
 }
@@ -56,17 +56,18 @@ const deleteIncome=(id)=>{
     let indexToDelete=incomes.findIndex(income=>income.id===id);
     incomes.splice(indexToDelete, 1);
     loadApp();
+    localStorageIncome(incomes);
 }
 
 const createIncomeHTML=(income)=> {
     let incomeHtml=`
       <div class="element cleanStyles">
-        <div class="element_description">${income.description}</div>
+        <div class="element_description">${income._description}</div>
         <div class="right cleanStyles">
-            <div class="element_value">${currencyFormat(income.value)}</div>
+            <div class="element_value">${currencyFormat(income._value)}</div>
             <div class="element_delete">
                 <button class="element_delete--btn">
-                    <ion-icon name="close" onclick="deleteIncome(${income.id})"></ion-icon>
+                    <ion-icon name="close" onclick="deleteIncome(${income._id})"></ion-icon>
                 </button>
             </div>
         </div>
@@ -87,18 +88,19 @@ const deleteEgress=(id)=>{
     let indexToDelete=egresses.findIndex(egress=>egress.id===id);
     egresses.splice(indexToDelete, 1);
     loadApp();
+    localStorageEgress(egresses);
 }
 
 const createEgressHTML=(egress)=> {
     let egressHtml=`
     <div class="element cleanStyles">
-                <div class="element_description">${egress.description}</div>
+                <div class="element_description">${egress._description}</div>
                 <div class="right cleanStyles">
-                    <div class="element_value">${egress.value}</div>
-                    <div class="element_percentage">${percentageFormat(egress.value/totalEgress())}</div>
+                    <div class="element_value">${currencyFormat(egress._value)}</div>
+                    <div class="element_percentage">${percentageFormat(egress._value/totalEgress())}</div>
                     <div class="element_delete">
                         <button class="element_delete--btn">
-                            <ion-icon name="close" onclick="deleteEgress(${egress.id})"></ion-icon>
+                            <ion-icon name="close" onclick="deleteEgress(${egress._id})"></ion-icon>
                         </button>
                     </div>
                 </div>
