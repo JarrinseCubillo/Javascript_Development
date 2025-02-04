@@ -65,6 +65,7 @@ const createIncomeHTML=(income)=> {
         <div class="element_description">${income._description}</div>
         <div class="right cleanStyles">
             <div class="element_value">${currencyFormat(income._value)}</div>
+            <div class="element_percentage">${percentageFormat(income._value/totalIncomes())}</div>
             <div class="element_delete">
                 <button class="element_delete--btn">
                     <ion-icon name="close" onclick="deleteIncome(${income._id})"></ion-icon>
