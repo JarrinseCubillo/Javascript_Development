@@ -227,6 +227,9 @@ h2 {
     color: #28B9B5;
 }
 
+.income .element_percentage{
+    background-color: #c5fffd;
+}
 .egress .element_value,
 .egress .element_percentage,
 .egress .element_delete--btn {
