@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-
 * {
     margin: 0;
     padding: 0;
@@ -26,4 +25,67 @@ body {
     height: 100%;
     width: 100%;
     flex-wrap: wrap;
+}
+
+.filters > * {
+    margin: .2em .9em;
+}
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+
+[type="radio"]:checked+label,
+[type="radio"]:not(:checked)+label {
+    position: relative;
+    padding-left: 12px;
+    padding-right: 12px;
+    cursor:pointer;
+    line-height: 30px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 400;
+    color:#fff;
+    margin-right: 10px;
+    margin-left: 10px;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+[type="radio"]:checked+label:after,
+[type="radio"]:not(:checked)+label:after{
+    content: '';
+    width: calc(100% - 8px);
+    border-radius: 2px;
+    height: 22px;
+    background-color:#e74c3c;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+[type="radio"]:not(:checked) + label:after{
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+[type="radio"]:checked + label:after{
+    opacity: 0.5;
+}
+[type="radio"]:checked:hover+label:before,
+[type="radio"]:not(:checked):hover+label:before,
+[type="radio"]:checked:hover+label:after,
+[type="radio"]:not(:checked):hover+label:after {
+    opacity: 0.7;
+}
+
+.radio-gens:checked + label:after,
+.radio-gens:not(:checked) + label:after {
+    background-color: #e74c3c;
 }
