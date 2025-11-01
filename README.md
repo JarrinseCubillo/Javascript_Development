@@ -1,5 +1,5 @@
 
-# Javascript Development ![My Skills](https://skillicons.dev/icons?i=js)
+# Javascript Development ![My Skills](https://skillicons.dev/icons?i=html,css,js)
 
 This is a project where several small JavaScript solutions have been developed to improve and expand my knowledge as a developer.
 
