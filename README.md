@@ -1,8 +1,7 @@
 
 # Javascript Development ![My Skills](https://skillicons.dev/icons?i=html,css,js)
-
 This is a project where several small JavaScript solutions have been developed to improve and expand my knowledge as a developer.
-
+## Note: Click on each project's icon to redirect and display each of the apps
 The projects included here:
 
 **Basic Calculator**: A basic calculator that can perform mathematical operations.
