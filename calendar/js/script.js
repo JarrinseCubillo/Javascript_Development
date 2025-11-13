@@ -48,7 +48,7 @@ const createCalendar = ({ locale, year }) => {
 
       const title = `<h1>${monthName} ${year}</h1>`
 
-      return `<div class='month-${monthName}'>${title}<ol>${renderedWeekDays} ${renderedDays}</ol></div>`
+      return `<div class='month' id='${monthName}'>${title}<ol>${renderedWeekDays} ${renderedDays}</ol></div>`
     }).join('')
 
     el.innerHTML = html
@@ -56,3 +56,5 @@ const createCalendar = ({ locale, year }) => {
   }
 let date = new Date();
 createCalendar({ year: date.getFullYear(), locale: 'en' })
+let anchor=document.getElementById(date.toLocaleDateString('en', { month: 'long' }));
+anchor.scrollIntoView({ behavior: 'smooth' });
