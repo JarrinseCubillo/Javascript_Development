@@ -48,7 +48,7 @@ const createCalendar = ({ locale, year }) => {
 
       const title = `<h1>${monthName} ${year}</h1>`
 
-      return `<div class='month'>${title}<ol>${renderedWeekDays} ${renderedDays}</ol></div>`
+      return `<div class='month-${monthName}'>${title}<ol>${renderedWeekDays} ${renderedDays}</ol></div>`
     }).join('')
 
     el.innerHTML = html
